@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-md-6">
+		<div class="img-responsive text-center">
+			<%= image_tag @listing.avatar.url(:large)%>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<h3 class="text-center listing-name">
+			<%= @listing.name %>
+		</h3>
+		<h4 class="text-center listing-price">
+			<%= number_to_currency(@listing.price) %>
+		</h4>
+		<p class="listing-description"><%= @listing.description %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @listing.name %>
-</p>
+	</div>
+	<div class="col-md-3">
+		Extra sell Area
+	</div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @listing.price %>
-</p>
+
 
 <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> |
 <%= link_to 'Back', listings_path, class: "btn btn-link" %>

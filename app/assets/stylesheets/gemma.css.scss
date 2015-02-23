@@ -1,1 +1,35 @@
-@import 'bootstrap';
+@import "bootstrap";
+body{
+	background: #f8f8f8;
+	color: #000;
+	font-family: 'Lato', sans-serif;
+}
+.listing-name{
+	font-family: 'Lato';
+	text-transform: uppercase;
+	
+}
+.listing-price{
+	font-family: 'Lato';
+	font-weight: 400;
+}
+.listing-description{
+	font-family: 'Lato';
+	font-weight: 300;
+	font-size: 17px;
+}
+.navbar-brand{
+	font-family: 'Abril Fatface', georgia;
+	font-size: 30px;
+	text-transform: uppercase;
+	color: #000;
+}
+.navbar-brand a{
+	color: #000;
+}
+.navbar-brand a:visited{
+	color: #000;
+}
+.col-md-3:nth-child(4n+1){
+	clear: left;
+}
