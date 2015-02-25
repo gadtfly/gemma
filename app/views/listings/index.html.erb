@@ -1,7 +1,7 @@
 
 <div class="row">
     <% @listings.each do |listing| %>
-      <div class="col-md-3 gallery">
+      <div class="col-md-3 col-xs-12 gallery">
         <div class="thumbnail">
           <%= link_to listing do %>
             <%= image_tag listing.image.url(:main)%>
@@ -16,5 +16,6 @@
       </div>
     <% end %>
 </div>
-
+<% if user_signed_in? %>
 <%= link_to 'New Listing', new_listing_path, class: "btn btn-link" %>
+<% end %>

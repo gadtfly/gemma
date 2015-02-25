@@ -10,6 +10,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listing = Listing.find(params[:id])
   end
 
   # GET /listings/new
@@ -25,7 +26,7 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
-
+    @listing.user_id = current_user.id
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
@@ -69,6 +70,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :description, :price, :image)
+      params.require(:listing).permit(:name, :description, :price, :image, :user_id)
     end
 end

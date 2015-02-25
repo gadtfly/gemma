@@ -1,26 +1,33 @@
 <div class="row">
+<div class="col-md-1 hidden-xs">
+		<%= link_to 'Back', listings_path, class: "btn btn-primary" %>
+	</div>
 	<div class="col-md-6 col-xs-12">
-		<div class="img-responsive pull-right">
+		<div class="img-responsive text-center">
 			<%= image_tag @listing.image.url(:large)%>
 		</div>
 	</div>
-	<div class="col-md-5 col-xs-12">
+	<div class="col-md-4 col-xs-12">
 		<h2 class="listing-name">
 			<%= @listing.name %>
 		</h2>
-		<h3 class="listing-price">
+		<div class="tx-div"></div>
+		<span class="listing-price">
 			<%= number_to_currency(@listing.price) %>
-		</h3>
+		</span>
+		<button class="btn-lg btn btn-primary">ADD TO CART</button>
+		<hr>
+		<p class="listing-vendor"><%="Sold By: #{ @listing.user.name }" %></p>
 		<p class="listing-description"><%= @listing.description %></p>
-
+		
 	</div>
 	<div class="col-md-1 hidden-xs">
-		Next Item
+		<%= link_to 'Next', listings_path, class: "btn btn-primary" %>
 	</div>
 </div>
 
 
 
-
-<%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> |
-<%= link_to 'Back', listings_path, class: "btn btn-link" %>
+<% if user_signed_in? %>
+<%= link_to 'Edit Product', edit_listing_path(@listing), class: "btn btn-default" %> 
+<% end %>
