@@ -1,21 +1,21 @@
 <div class="row">
-	<div class="col-md-6">
-		<div class="img-responsive text-center">
-			<%= image_tag @listing.avatar.url(:large)%>
+	<div class="col-md-6 col-xs-12">
+		<div class="img-responsive pull-right">
+			<%= image_tag @listing.image.url(:large)%>
 		</div>
 	</div>
-	<div class="col-md-3">
-		<h3 class="text-center listing-name">
+	<div class="col-md-5 col-xs-12">
+		<h2 class="listing-name">
 			<%= @listing.name %>
-		</h3>
-		<h4 class="text-center listing-price">
+		</h2>
+		<h3 class="listing-price">
 			<%= number_to_currency(@listing.price) %>
-		</h4>
+		</h3>
 		<p class="listing-description"><%= @listing.description %></p>
 
 	</div>
-	<div class="col-md-3">
-		Extra sell Area
+	<div class="col-md-1 hidden-xs">
+		Next Item
 	</div>
 </div>
 

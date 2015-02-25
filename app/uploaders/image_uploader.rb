@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class AvatarUploader < CarrierWave::Uploader::Base
+class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -36,7 +36,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [150, 200]
   end
   version :main do
-    process :resize_to_fit => [200, 300]
+    process :resize_to_fit => [250, 350]
   end
   version :large do
     process :resize_to_fit => [400, 600]

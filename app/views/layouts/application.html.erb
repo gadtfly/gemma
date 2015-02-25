@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gemma & Jet</title>
+  <title>Gemma & Jet - Fashion Redefined.</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Lato:300,400|Open+Sans:400,300|Raleway:400,300|Abril+Fatface' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 <%= render 'layouts/nav' %>
-<div class="container">
-<%= yield %>
-</div>
+
+  <div class="container">
+  	<div class='flashes'>
+        <% if flash[:notice] %>
+           <div class="alert alert-success">
+             <button type="button" class="close" data-dismiss="alert">&times;</button>
+             <%= flash[:notice] %>
+           </div>
+         <% elsif flash[:error] %>
+           <div class="alert alert-danger">
+             <button type="button" class="close" data-dismiss="alert">&times;</button>
+             <%= flash[:error] %>
+           </div>
+         <% elsif flash[:alert] %>
+           <div class="alert alert-warning">
+             <button type="button" class="close" data-dismiss="alert">&times;</button>
+             <%= flash[:alert] %>
+           </div>
+         <% end %>
+       </div>
+  <%= yield %>
+  </div>
+
 <%= render 'layouts/footer' %>
 </body>
 </html>
