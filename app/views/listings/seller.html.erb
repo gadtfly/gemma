@@ -1,0 +1,28 @@
+<body id="vendor-screen">
+<h2 class="text-center text-uppercase">Your Store Products</h2>
+<p class="text-center">Feel free to make any changes you'd like. We love when our vendors keep their lineup fresh!</p>
+<div class="text-center p10 text-uppercase">
+  <%= button_to 'Add New Product', listings_path, class: "btn btn-primary" %>
+</div>
+<div class="row">
+    <% @listings.each do |listing| %>
+      <div class="col-md-3 col-xs-12 gallery">
+        <div class="thumbnail">
+          <%= link_to listing do %>
+            <%= image_tag listing.image.url(:main)%>
+            <div class="caption">
+              <p class="product-name text-center text-uppercase"><%= listing.name %></p>
+              <p class="product-price text-center"><%= number_to_currency(listing.price) %></p>
+              <% if (user_signed_in?) && (current_user == listing.user) %>
+                <div class="text-center">
+                <%= link_to 'Edit', edit_listing_path(listing), class: "btn btn-link" %>
+                <%= link_to 'Delete', listing, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-link" %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+</div>
+</body>

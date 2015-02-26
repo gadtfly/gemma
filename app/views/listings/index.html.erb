@@ -11,11 +11,9 @@
             </div>
           <% end %>
         </div>
-        
+        <%= button_to 'Add New Product', listings_path, class: "btn btn-primary" %>
         
       </div>
     <% end %>
 </div>
-<% if user_signed_in? %>
-<%= link_to 'New Listing', new_listing_path, class: "btn btn-link" %>
-<% end %>
+

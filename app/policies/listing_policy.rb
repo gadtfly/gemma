@@ -1,0 +1,3 @@
+class ListingPolicy < ApplicationPolicy
+
+end

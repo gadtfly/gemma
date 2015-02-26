@@ -1,6 +1,7 @@
-<h1>Editing Listing</h1>
+<h1 class="text-uppercase">Edit Product</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @listing, class: "btn btn-link" %> |
-<%= link_to 'Back', listings_path, class: "btn btn-link" %>
+<%= link_to 'Back', :back, class: "btn btn-link" %>
+<div><%= button_to 'Delete', @listing, method: :delete, data: {confirm: "Are you sure you want to delete this product?"}, class: "btn btn-danger" %></div>

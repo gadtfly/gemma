@@ -4,7 +4,6 @@
       <p class="top-copy text-center text-uppercase">
       Fashion Redefined.
       </p>
-      
     </div>
 
     <div class="col-md-4">
@@ -15,12 +14,28 @@
         <li><a class="gemma-link2" href="#"><i class="fa-li fa fa-lg fa-envelope"></i></a></li>
       </ul>
     </div>
+    
     <div class="col-md-4 text-center">
       <ul class="list-unstyled list-inline">
-      
+        <li class="top-copy text-uppercase"><%= link_to "Blog", root_path %></li>
       <% if user_signed_in? %>
-        <li class="top-copy text-uppercase"><%= link_to "Seller Dashboard", root_path %></li>
-        <li class="top-copy text-uppercase"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        
+        <% if current_user.seller %>
+          <% if current_user.seller.confirmed %>
+          <li class="dropdown text-uppercase">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vendor Portal <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="text-uppercase vendor"><a href="#">Vendor Dashboard</a></li>
+              <li class="text-uppercase vendor"><a href="#">Add Product</a></li>
+              <li class="text-uppercase vendor"><%= link_to 'View Products', vendor_path %></li>
+            </ul>
+          </li>
+          <% else %>
+            Awaiting Confirmation
+          <% end %>
+        <% else %>
+          <li class="top-copy text-uppercase"><%= link_to "Sell With Us?", sellers_path, method: :post %></li>
+        <% end %>
       <% else %>
         <li class="top-copy text-uppercase"><%= link_to "Sell With Us?", root_path %></li>
       <% end %>
@@ -45,21 +60,22 @@
     </div>
     
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Shop", pages_about_path %></li> 
-        <li><%= link_to "Women", pages_contact_path %></li>
-        <li><%= link_to "Accessories", root_path %></li>
-        
+
+      <ul class="nav navbar-nav navbar-left">
+        <li class="text-uppercase"><%= link_to "Shop", listings_path %></li> 
+        <li class="text-uppercase"><%= link_to "Women", pages_contact_path %></li>
+        <li class="text-uppercase"><%= link_to "Accessories", root_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Blog", root_path %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "Specials", root_path %></li>
+          <li class="text-uppercase"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <li class="text-uppercase"><%= link_to "Specials", root_path %></li>
         <% else %>
-          <li><%= link_to "Login", new_user_session_path %></li>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <li class="text-uppercase"><%= link_to "Login", new_user_session_path %></li>
+          <li class="text-uppercase"><%= link_to "Sign Up", new_user_registration_path %></li>
         <% end %>
       </ul>
+
     </div>
   </div>
 </nav>

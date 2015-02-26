@@ -1,8 +1,14 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:seller, :new, :create, :edit, :update, :destroy]
+  before_filter :check_user, only: [:edit, :update, :destroy]
+  
 
   # GET /listings
   # GET /listings.json
+  def seller
+    @listings = Listing.where(user: current_user).order("created_at DESC")
+  end
   def index
     @listings = Listing.all
   end
@@ -15,7 +21,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    @listing = Listing.new(listing_params)
   end
 
   # GET /listings/1/edit
@@ -29,7 +35,7 @@ class ListingsController < ApplicationController
     @listing.user_id = current_user.id
     respond_to do |format|
       if @listing.save
-        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
+        format.html { redirect_to @listing, notice: 'Product has been successfully created. Thanks!' }
         format.json { render :show, status: :created, location: @listing }
       else
         format.html { render :new }
@@ -43,7 +49,7 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
+        format.html { redirect_to @listing, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing }
       else
         format.html { render :edit }
@@ -57,7 +63,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to listings_url, notice: 'Product was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -71,5 +77,10 @@ class ListingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
       params.require(:listing).permit(:name, :description, :price, :image, :user_id)
+    end
+    def check_user
+      if current_user != @listing.user
+        format.html { redirect_to root_url, alert: 'Sorry, you can not access that page.' }
+      end
     end
 end

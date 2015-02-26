@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
 
  	validates :name, presence: true
  	has_many :listings, dependent: :destroy
+ 	has_one :seller
+
+ 	def admin?
+ 		role == 'admin'
+ 	end
+ 	
 end
