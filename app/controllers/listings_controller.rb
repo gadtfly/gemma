@@ -10,7 +10,12 @@ class ListingsController < ApplicationController
     @listings = Listing.where(user: current_user).order("created_at DESC")
   end
   def index
-    @listings = Listing.all.order("created_at DESC").page(params[:page]).per(8)
+    if params[:category].blank?
+      @listings = Listing.all.order("created_at DESC").page(params[:page]).per(8)
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @listings = Listing.where(category_id: @category_id).order("created_at DESC")
+    end
   end
 
   # GET /listings/1
@@ -76,7 +81,7 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :description, :price, :image, :user_id)
+      params.require(:listing).permit(:name, :description, :price, :image, :user_id, :category_id)
     end
     def check_user
       if current_user != @listing.user
