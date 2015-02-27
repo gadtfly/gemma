@@ -1,4 +1,4 @@
-
+<body class="pages index">
 <div class="row">
     <% @listings.each do |listing| %>
       <div class="col-md-3 col-xs-12 gallery">
@@ -11,9 +11,14 @@
             </div>
           <% end %>
         </div>
-        <%= button_to 'Add New Product', listings_path, class: "btn btn-primary" %>
-        
       </div>
     <% end %>
 </div>
-
+<div class="text-center"><%= paginate @listings, :left => 1, :right => 2 %></div>
+</body>
+<script>
+  $(function() {
+    $('.gallery').each(function(i) {
+    $(this).delay((i++) * 100).fadeTo(500, 1); })
+  });
+</script>

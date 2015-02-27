@@ -10,7 +10,7 @@ class ListingsController < ApplicationController
     @listings = Listing.where(user: current_user).order("created_at DESC")
   end
   def index
-    @listings = Listing.all
+    @listings = Listing.all.order("created_at DESC").page(params[:page]).per(8)
   end
 
   # GET /listings/1
@@ -21,7 +21,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    @listing = Listing.new(listing_params)
+    @listing = Listing.new
   end
 
   # GET /listings/1/edit

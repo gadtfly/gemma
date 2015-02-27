@@ -2,12 +2,12 @@
 <div class="col-md-1 hidden-xs">
 		<%= link_to '', :back, class: "fa fa-chevron-left" %>
 	</div>
-	<div class="col-md-6 col-xs-12" id="main-product">
+	<div class="col-md-6 col-xs-12 animated fadeInLeft" id="main-product">
 		<div class="img-responsive text-center">
 			<%= image_tag @listing.image.url(:large)%>
 		</div>
 	</div>
-	<div class="col-md-4 col-xs-12" id="main-description">
+	<div class="col-md-4 col-xs-12 animated fadeInRight" id="main-description">
 		<h2 class="listing-name">
 			<%= @listing.name %>
 		</h2>
@@ -31,7 +31,7 @@
 		<% if (user_signed_in?) && (current_user = @listing.user) %>
 		  <%= link_to 'Delete Product', @listing, method: :delete, data: { confirm: 'Are you sure you want to delete this product?'}, class: "btn btn-danger" %>
 			<%= link_to 'Edit Product', edit_listing_path(@listing), class: "btn btn-default" %> 
-			<%= link_to 'Back To Your Products', new_listing_path, class: "btn btn-link" %>
+			<%= link_to 'Back To Your Products', vendor_path, class: "btn btn-link" %>
 		<% end %>
 	</div>
 </div>

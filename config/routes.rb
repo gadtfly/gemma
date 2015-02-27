@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   resources :sellers, only: [:create, :index, :update, :destroy]
   get 'pages/about'
   get 'pages/contact'
+  get 'pages/home'
   get 'vendor' => 'listings#seller'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'listings#index'
+  root 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

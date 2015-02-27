@@ -1,8 +1,10 @@
 <body id="vendor-screen">
 <h2 class="text-center text-uppercase">Your Store Products</h2>
 <p class="text-center">Feel free to make any changes you'd like. We love when our vendors keep their lineup fresh!</p>
-<div class="text-center p10 text-uppercase">
-  <%= button_to 'Add New Product', listings_path, class: "btn btn-primary" %>
+<div class="p15">
+  <button class=" btn btn-primary center-block text-uppercase">
+    <%= link_to 'Add New Product', new_listing_path %>
+  </button>
 </div>
 <div class="row">
     <% @listings.each do |listing| %>
@@ -26,3 +28,9 @@
     <% end %>
 </div>
 </body>
+<script>
+  $(function() {
+    $('.gallery').each(function(i) {
+    $(this).delay((i++) * 100).fadeTo(500, 1); })
+  });
+</script>
