@@ -1,0 +1,25 @@
+<body class="pages index">
+<h2 class="text-uppercase center">The <%= @listing.user.name %> Shop</h2>
+<div class="row">
+    <% @listings.each do |listing| %>
+      <div class="col-md-3 col-xs-12 gallery">
+        <div class="thumbnail">
+          <%= link_to listing do %>
+            <%= image_tag listing.image.url(:main)%>
+            <div class="caption">
+              <p class="product-name text-center text-uppercase"><%= listing.name %></p>
+              <p class="product-price text-center"><%= number_to_currency(listing.price) %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+</div>
+<div class="text-center"><%= paginate @listings, :left => 1, :right => 2 %></div>
+</body>
+<script>
+  $(function() {
+    $('.gallery').each(function(i) {
+    $(this).delay((i++) * 100).fadeTo(500, 1); })
+  });
+</script>

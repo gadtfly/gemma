@@ -1,0 +1,14 @@
+<div class="cart">
+	<table class="table">
+		<% @shopping_cart.shopping_cart_items.each do |shopping_cart_item| %>
+		<tr>
+			<td><%= shopping_cart_item.item.name %></td>
+			<td><%= shopping_cart_item.price %></td>
+		</tr>
+		<% end %>
+		</table>
+	<div class="pull-right">
+		<span>Subtotal</span>
+		<span><%= @shopping_cart.total %></span>
+	</div>
+</div>

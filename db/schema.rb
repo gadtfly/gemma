@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227233652) do
-
-  create_table "cart_items_tables", force: :cascade do |t|
-  end
+ActiveRecord::Schema.define(version: 20150228083243) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -33,6 +30,17 @@ ActiveRecord::Schema.define(version: 20150227233652) do
     t.integer  "category_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "listing_id"
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+  end
+
   create_table "sellers", force: :cascade do |t|
     t.integer  "user_id"
     t.boolean  "confirmed"
@@ -41,13 +49,17 @@ ActiveRecord::Schema.define(version: 20150227233652) do
   end
 
   create_table "shopping_cart_items", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "owner_id"
+    t.string  "owner_type"
+    t.integer "quantity"
+    t.integer "item_id"
+    t.string  "item_type"
+    t.float   "price"
   end
 
   create_table "shopping_carts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

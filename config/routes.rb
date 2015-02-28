@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :categories
+  resources :orders
 
+  resources :categories
+  resource :shopping_cart, only: [:create, :show] do
+    post :checkout
+  end
   devise_for :users
   resources :listings
   resources :sellers, only: [:create, :index, :update, :destroy]
@@ -8,6 +12,8 @@ Rails.application.routes.draw do
   get 'pages/contact'
   get 'pages/home'
   get 'vendor' => 'listings#seller'
+  get '/listings/:id' => 'listings#shop', as: 'shop' 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

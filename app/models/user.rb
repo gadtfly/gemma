@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
  	validates :name, presence: true
  	has_many :listings, dependent: :destroy
  	has_one :seller
- 
+ 	has_many :sales, class_name: "Order", foreign_key: "seller_id"
+ 	has_many :purchases, class_name: "Order", foreign_key: "buyer_id"
+
  	def admin?
  		role == 'admin'
  	end

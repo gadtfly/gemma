@@ -9,6 +9,11 @@ class ListingsController < ApplicationController
   def seller
     @listings = Listing.where(user: current_user).order("created_at DESC")
   end
+  def shop
+    # @listings = Listing.where(user: Listing.find(params[:id])) 
+    @listings = Listing.where(seller: User.find(params[:id])) 
+    @user = User.find(params[:id]) 
+  end 
   def index
     if params[:category].blank?
       @listings = Listing.all.order("created_at DESC").page(params[:page]).per(8)
