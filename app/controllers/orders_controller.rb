@@ -37,8 +37,8 @@ class OrdersController < ApplicationController
       flash[:notice] = "Thanks for your order"
     rescue Stripe::CardError => e
       flash[:danger] = e.message
-      
 
+    end
     respond_to do |format|
       if @order.save
         format.html { redirect_to root_url, notice: 'Order was successfully created.' }
