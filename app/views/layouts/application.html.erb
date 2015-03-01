@@ -4,7 +4,9 @@
   <title>Gemma & Jet - Fashion Redefined.</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://js.stripe.com/v2/' %>
   <%= csrf_meta_tags %>
+  <%= tag :meta, :name => 'stripe-key', :content => ENV['STRIPE_PUBLIC_KEY'] %>
   <link href='https://fonts.googleapis.com/css?family=Lato:300,400|Open+Sans:400,300|Raleway:400,300|Abril+Fatface' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>

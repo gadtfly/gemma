@@ -19,7 +19,7 @@
       <ul class="list-unstyled list-inline">
         <li class="top-copy text-uppercase"><%= link_to "Blog", root_path %></li>
       <% if user_signed_in? %>
-        
+        <li class="top-copy text-uppercase"><%= link_to "Sell With Us?", root_path %></li>
         <% if current_user.seller %>
           <% if current_user.seller.confirmed %>
           <li class="dropdown text-uppercase">
@@ -29,7 +29,6 @@
               <li class="text-uppercase vendor"><%= link_to 'Add Product', new_listing_path %></li>
               <li class="text-uppercase vendor"><%= link_to 'View Products', vendor_path %></li>
               <li class="text-uppercase vendor"><%= link_to 'Sales Hisory', sales_path %></li>
-
             </ul>
           </li>
           <% else %>
@@ -65,33 +64,28 @@
 
       <ul class="nav navbar-nav navbar-left">
         <li class="text-uppercase"><%= link_to "Shop", listings_path %></li> 
-        <li class="text-uppercase"><%= link_to "Women", pages_about_path %></li>
-        <li class="text-uppercase"><%= link_to "Accessories", root_path %></li>
+        <!-- <li class="text-uppercase"><%= link_to "Women", pages_about_path %></li>
+        <li class="text-uppercase"><%= link_to "Accessories", root_path %></li> -->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Browse by Category <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <% Category.all.each do |category| %>
+            <li><%= link_to category.name, listings_path(category: category.name) %></li>
+            <% end %>
           </ul>
         </li>
+        <li class="text-uppercase"><%= link_to "About Gemma", pages_about_path %></li> 
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li class="text-uppercase"><%= link_to "Edit Profile", edit_user_registration_path %></li>
-            <li class="text-uppercase"><%= link_to "Order History", purchases_path %></li>
-            <li class="text-uppercase"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-            
-          </ul>
-        </li>
-          
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="text-uppercase"><%= link_to "Edit Profile", edit_user_registration_path %></li>
+              <li class="text-uppercase"><%= link_to "Order History", purchases_path %></li>
+              <li class="text-uppercase"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
         <% else %>
           <li class="text-uppercase"><%= link_to "Login", new_user_session_path %></li>
           <li class="text-uppercase"><%= link_to "Sign Up", new_user_registration_path %></li>

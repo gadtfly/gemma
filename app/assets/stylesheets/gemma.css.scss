@@ -57,10 +57,12 @@ color: #555;
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
 background-color: #f8f8f8;
 border: none;
+outline: none;
 }
 
 .navbar-default .navbar-nav > li > a{
 	color: #000;
+	outline: none;
 }
 
 .navbar-default .navbar-nav > li > a:hover{
@@ -69,7 +71,8 @@ border: none;
 }
 .navbar-nav > li > a{
 	padding: 30px 10px 30px 10px;
-	text-transform: uppercase;	
+	text-transform: uppercase;
+	outline: none;	
 }
 .navbar-nav > li > a:hover{
 	color: #dcd17c;	
@@ -81,6 +84,9 @@ border: none;
 }
 .navbar-toggle{
 	margin-top: 25px;
+}
+.thumbnail a{
+	outline: none;
 }
 #gj-logo{
 	padding-top: 10px;
@@ -171,7 +177,22 @@ button:focus {
 .btn-primary{
 	background: #dcd17c !important;
 	border: none;
+	a{
+		color: #fff;
+	}
 }
+.btn-primary:hover{
+	background: #000 !important;
+	color: #dcd17c;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out; /* IE10 is actually unprefixed */
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+.btn-primary a:hover{
+		color: #dcd17c;
+	}
 .btn-link{
 	color: #000;
 	font-weight: normal;
@@ -215,18 +236,20 @@ button:focus {
 }
 a{
 	color: #111;
+	outline: none;
 }
 a:hover{
 	color: #dcd17c;
 	text-decoration: none;
 }
-.form-control{
+.form-group{
 	width: 50%;
 }
 .form-control:focus {
   border-color: #dcd17c;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(220, 209, 124, 0.6);
 }
+
 .vendor a{
 	color: #000 !important;
 }
@@ -236,11 +259,17 @@ a:hover{
 #sales-screen{
 	background-color: #fff;
 }
+#about-screen{
+	background-color: #dedede;
+}
+.gemma-copy{
+	font-size: 16px;
+}
 .p15{
 	padding: 15px;
 }
 #homepage{
-	background: url('/assets/home1.jpg') no-repeat 0 100px;
+	background: image-url('home1.jpg') no-repeat 0 100px;
 	background-size: cover;
 	height: 100%;
 	max-width: 100%;

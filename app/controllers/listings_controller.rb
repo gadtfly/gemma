@@ -19,7 +19,7 @@ class ListingsController < ApplicationController
       @listings = Listing.all.order("created_at DESC").page(params[:page]).per(8)
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @listings = Listing.where(category_id: @category_id).order("created_at DESC")
+      @listings = Listing.where(category_id: @category_id).order("created_at DESC").page(params[:page]).per(8)
     end
   end
 
