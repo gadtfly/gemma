@@ -5,7 +5,7 @@ class ShoppingCartsController < ApplicationController
 	def create
     @listing = Listing.find(params[:listing_id])
     @shopping_cart.add(@listing, @listing.price)
-    redirect_to :backend
+    redirect_to :back
   end
   def show
   	

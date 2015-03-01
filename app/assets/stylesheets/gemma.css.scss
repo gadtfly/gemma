@@ -48,6 +48,17 @@ body{
 	height: 90px;
 	line-height: 90px;
 }
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+background-color: #f8f8f8;
+color: #555;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+background-color: #f8f8f8;
+border: none;
+}
+
 .navbar-default .navbar-nav > li > a{
 	color: #000;
 }
@@ -221,6 +232,9 @@ a:hover{
 }
 #vendor-screen{
 	background-color: #dedede;
+}
+#sales-screen{
+	background-color: #fff;
 }
 .p15{
 	padding: 15px;

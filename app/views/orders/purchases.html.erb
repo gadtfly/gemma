@@ -1,0 +1,30 @@
+<body id="order-screen">
+<h2 class="text-center text-uppercase">Your Order History</h2>
+<p class="text-center">You've bought some awesome things - we like your style!</p>
+<p class="text-center">Here's a history of your purchases.</p>
+
+<div class="p15">
+  <button class=" btn btn-primary center-block text-uppercase">
+    <%= link_to 'Back to Shop', listings_path %>
+  </button>
+</div>
+
+<table class="table table-border">
+  <tr>
+    <th class="text-center">Image</th>
+    <th class="text-center">Name</th>
+    <th class="text-center">Price</th>
+    <th class="text-center">Creator</th>
+    <th class="text-center">Date Purchased</th>
+  </tr>
+  <% @orders.each do |order| %>
+  <tr>
+    <td class="text-center"><%= image_tag order.listing.image.url(:thumb)%></td>
+    <td class="text-center"><%= order.listing.name %></td>
+    <td class="text-center"><%= number_to_currency(order.listing.price) %></td>
+    <td class="text-center"><%= order.seller.name %></td>
+    <td class="text-center"><%= order.created_at.strftime("%B %-d, %Y") %></td>
+  </tr>
+  <% end %>
+</table>
+</body>
