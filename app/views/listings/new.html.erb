@@ -1,5 +1,6 @@
-<h1>New Product</h1>
+<h1 class="text-uppercase">New Product</h1>
 
 <%= render 'form' %>
 
-<button class="btn btn-default"> <%= link_to 'Back To Products', vendor_path %></button>
+<%= link_to 'Back To Products', vendor_path, class: "btn btn-default" %>
+
