@@ -1,9 +1,12 @@
-<body class="pages index">
-<h2 class="text-uppercase center">The <%= @listing.user.name %> Shop</h2>
+<body id="shop-screen">
+<div id="store">
+  <h1 class="text-uppercase text-center">Welcome to The <span class="gemmaGold">"<%= @user.name %>"</span> Shop</h1>
+  <p class="text-uppercase text-center gemma-copy">Thank you for visiting!</p>
+</div>
 <div class="row">
     <% @listings.each do |listing| %>
       <div class="col-md-3 col-xs-12 gallery">
-        <div class="thumbnail">
+        <div class="thumbnail gemma-store">
           <%= link_to listing do %>
             <%= image_tag listing.image.url(:main)%>
             <div class="caption">
@@ -23,3 +26,4 @@
     $(this).delay((i++) * 100).fadeTo(500, 1); })
   });
 </script>
+

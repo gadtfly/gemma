@@ -194,6 +194,23 @@ button:focus {
 .btn-primary a:hover{
 		color: #dcd17c;
 	}
+.btn-info{
+	background: #000;
+	border: none;
+	color: #dcd17c;
+}
+.btn-info:hover{
+	background: #dcd17c !important;
+	color: #fff;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out; /* IE10 is actually unprefixed */
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+.btn-info a:hover{
+		color: #dcd17c;
+	}
 .btn-link{
 	color: #000;
 	font-weight: normal;
@@ -257,14 +274,52 @@ a:hover{
 #vendor-screen{
 	background-color: #dedede;
 }
+#shop-screen{
+	background-color: #dedede;
+}
 #sales-screen{
 	background-color: #fff;
 }
 #about-screen{
 	background-color: #dedede;
 }
+#store{
+	background: #000;
+	color: #fff;
+	padding: 15px 0;
+	margin: 10px 0;
+}
+.gemma-store:hover{
+	background: #dcd17c;
+	color: #fff;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out; /* IE10 is actually unprefixed */
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+.gemma-panel{
+	background: #dcd17c;
+	height: 125px;
+}
+.gemma-panel:hover{
+	background: #000;
+	color: #dcd17c;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out; /* IE10 is actually unprefixed */
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
 .gemma-copy{
 	font-size: 16px;
+}
+.gemmaGold{
+	color: #dcd17c;
+}
+.gemmaGoldLink{
+	text-decoration: underline;
+	color: #000;
 }
 .p15{
 	padding: 15px;
@@ -314,10 +369,58 @@ a:hover{
 	background-color: #fff;
 	border: 1px solid #dedede;
 }
+.gemma-menu{
+	position: absolute;
+	top: 75%;
+	
+}
+.dropdown-menu li>a:hover{
+		background: #dcd17c;
+		color: #000;
+		-webkit-transition: all 0.3s ease-out;
+		-moz-transition: all 0.3s ease-out;
+		-ms-transition: all 0.3s ease-out; /* IE10 is actually unprefixed */
+		-o-transition: all 0.3s ease-out;
+		transition: all 0.3s ease-out;
+	}
 .cart{
 	width: 350px;
-	opacity: 0;
+	padding: 20px;
+	.table > tbody > tr:first-child > td {
+    border: none;
+	}
 }
-.cart:hover{
-	opacity: 1;
+.cart-info{
+	background: #dcd17c;
+	color: #000;	
 }
+#checkout{
+	margin: auto;
+		table th, td{
+			text-align: left;
+		}
+}
+#full-cart{
+	.table > tbody > tr:first-child > td {
+    border: none;
+	}.table > tbody > tr:first-child > th {
+    border: none;
+	}
+}
+#total-table{
+	.table > thead > tr > th, 
+	.table > thead > tr > td, 
+	.table > tbody > tr > th, 
+	.table > tbody > tr > td, 
+	.table > tfoot > tr > th, 
+	.table > tfoot > tr > td,
+	.table tr > td{
+		border: none !important;
+	}
+}
+#totals{
+	margin-left: 35px;
+}
+// .dropdown:hover .dropdown-menu {
+//     display: block;
+//  }

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-
   resources :categories
   resource :shopping_cart, only: [:create, :show] do
     post :checkout
@@ -13,10 +12,13 @@ Rails.application.routes.draw do
   get 'pages/about'
   get 'pages/contact'
   get 'pages/home'
+  get 'pages/designer', as: 'designer'
   get 'vendor' => 'listings#seller'
-  get '/listings/:id' => 'listings#shop', as: 'shop' 
+  get '/shop/:id' => 'listings#shop', as: 'shop' 
   get 'sales' => 'orders#sales'
   get 'purchases' => 'orders#purchases'
+  get 'checkout' => 'shopping_carts#checkout', as: 'checkout'
+  get 'cart' => 'shopping_carts#cart', as: 'cart'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

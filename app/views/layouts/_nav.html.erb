@@ -19,7 +19,7 @@
       <ul class="list-unstyled list-inline">
         <li class="top-copy text-uppercase"><%= link_to "Blog", root_path %></li>
       <% if user_signed_in? %>
-        <li class="top-copy text-uppercase"><%= link_to "Sell With Us?", root_path %></li>
+        <li class="top-copy text-uppercase"><%= link_to "Sell With Us?", designer_path %></li>
         <% if current_user.seller %>
           <% if current_user.seller.confirmed %>
           <li class="dropdown text-uppercase">
@@ -35,10 +35,10 @@
             <li>Welcome, <%= current_user.name %></li>
           <% end %>
         <% else %>
-          <li class="top-copy text-uppercase"><%= link_to "Sell With Us?", sellers_path, method: :post %></li>
+          <li class="top-copy text-uppercase"><%= link_to "Sell With Us?", designer_path %></li>
         <% end %>
       <% else %>
-        <li class="top-copy text-uppercase"><%= link_to "Sell With Us?", root_path %></li>
+        <li class="top-copy text-uppercase"><%= link_to "Sell With Us?", designer_path %></li>
       <% end %>
       </ul>
     </div>
@@ -61,14 +61,12 @@
     </div>
     
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
       <ul class="nav navbar-nav navbar-left">
         <li class="text-uppercase"><%= link_to "Shop", listings_path %></li> 
-        <!-- <li class="text-uppercase"><%= link_to "Women", pages_about_path %></li>
-        <li class="text-uppercase"><%= link_to "Accessories", root_path %></li> -->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Browse by Category <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+          role="button" aria-expanded="false">Browse by Category <span class="caret"></span></a>
+          <ul class="dropdown-menu gemma-menu" role="menu">
             <% Category.all.each do |category| %>
             <li><%= link_to category.name, listings_path(category: category.name) %></li>
             <% end %>
@@ -80,7 +78,7 @@
         <% if user_signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
+            <ul class="dropdown-menu gemma-menu" role="menu">
               <li class="text-uppercase"><%= link_to "Edit Profile", edit_user_registration_path %></li>
               <li class="text-uppercase"><%= link_to "Order History", purchases_path %></li>
               <li class="text-uppercase"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
@@ -90,11 +88,13 @@
           <li class="text-uppercase"><%= link_to "Login", new_user_session_path %></li>
           <li class="text-uppercase"><%= link_to "Sign Up", new_user_registration_path %></li>
         <% end %>
-        <!-- <li class="dropdown cart">
-          <%= render partial: 'shopping_carts/shopping_cart' %>
-        </li> -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Cart <span><i class="fa fa-cart-plus"></i></span></a>
+            <ul class="dropdown-menu gemma-menu" role="menu">
+              <li class="text-uppercase"><%= render partial: 'shopping_carts/shopping_cart' %></li>
+            </ul>
+          </li>
       </ul>
-
     </div>
   </div>
 </nav>

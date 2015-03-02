@@ -1,0 +1,33 @@
+<div class="row text-uppercase">
+<h1 class="text-center text-uppercase">Checkout</h1>
+<div class="row">
+	<div id="checkout">
+		<div class="col-md-8">
+			<table class="table table-bordered">
+				<tr>
+					<th>Item</th>
+					<th>Price</th>
+				</tr>
+				<% @shopping_cart.shopping_cart_items.each do |checkout| %>
+				<tr>
+					
+					<td><%= checkout.item.name %></td>
+					<td><%= number_to_currency(checkout.price) %></td>
+				</tr>
+				<% end %>
+				<tr>
+					<td>
+						<span class="pull-right"></span>
+					</td>
+					<td>
+						<span class="pull-left">Subtotal: <%= number_to_currency(@shopping_cart.total) %></span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-md-4">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus fugit quaerat autem facere consequuntur maiores nam numquam laborum aut, vitae at nihil praesentium aliquam consectetur quos, a voluptatem veritatis rerum.</p>
+		</div>
+	</div>
+</div>
+</div> 
