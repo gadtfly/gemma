@@ -6,12 +6,14 @@
 				<tr>
 					<th>Item</th>
 					<th></th>
+					<th class="text-center">Quantity</th>
 					<th>Price</th>
 				</tr>
 				<% @shopping_cart.shopping_cart_items.each do |checkout| %>
 				<tr>
 						<td><%= image_tag checkout.item.image.url(:micro) %></td>
 						<td><%= checkout.item.name %></td>
+						<td class="text-center"><%= checkout.quantity %></td>						
 						<td><%= number_to_currency(checkout.price) %></td>
 				</tr>
 				<% end %>
@@ -26,19 +28,19 @@
 	<table class="table" id="totals">
 		<tr>
 			<td class="gemma-copy p15">Subtotal: </td>
-			<td><%= @shopping_cart.total %></td>
+			<td><%= number_to_currency(@shopping_cart.subtotal) %></td>
 		</tr>
 		<tr>
 			<td class="gemma-copy p15">Shipping: </td>
-			<td><%= @shopping_cart.total %></td>
+			<td><%= number_to_currency(@shopping_cart.total) %></td>
 		</tr>
 		<tr>
 			<td class="gemma-copy p15">Taxes: </td>
-			<td><%= @shopping_cart.total %></td>
+			<td><%= number_to_currency(@shopping_cart.taxes) %></td>
 		</tr>
 		<tr>
 			<td class="gemma-copy p15">Total: </td>
-			<td><%= @shopping_cart.total %></td>
+			<td><%= number_to_currency(@shopping_cart.total) %></td>
 		</tr>
 	</table>
 

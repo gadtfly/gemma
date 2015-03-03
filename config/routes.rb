@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   
+  get 'shopping_cart_items/show'
+
+  get 'shopping_cart_items/update'
+
+  get 'shopping_cart_items/destroy'
+
   resources :categories
-  resource :shopping_cart, only: [:create, :show] do
+  resource :shopping_cart, only: [:create, :show, :destroy, :update] do
     post :checkout
   end
   devise_for :users
