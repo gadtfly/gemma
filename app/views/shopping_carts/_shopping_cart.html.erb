@@ -2,19 +2,19 @@
 	<table class="table">
 		<% @shopping_cart.shopping_cart_items.each do |shopping_cart_item| %>
 		<tr>
-			<td><%= shopping_cart_item.item.name %></td>
-			<td><%= number_to_currency(shopping_cart_item.price) %></td>
+			<td><%= image_tag shopping_cart_item.item.image.url(:micro) %></td>
+			<td class="valign"><%= shopping_cart_item.item.name %></td>
+			<td class="valign"><%= number_to_currency(shopping_cart_item.price) %></td>
 		</tr>
 		<% end %>
-		<tr class="cart-info">
-		<td>Cart Subtotal:</td>
-			<td>
-				<%= number_to_currency(@shopping_cart.total) %>
-			</td>
-		</tr>
 	</table>
+	<div class="clearfix"></div>
+	<div id="sub-total">
+		<div class="text-center">Cart Subtotal: <%= number_to_currency(@shopping_cart.total) %></div>
+	</div>
 	<div class="">
 	<%= link_to "View Cart", cart_path, class: "btn btn-primary btn-block" %>
 		<%= link_to "Go to Checkout", checkout_path, class: "btn btn-primary btn-block" %>
 	</div>
 </div>
+

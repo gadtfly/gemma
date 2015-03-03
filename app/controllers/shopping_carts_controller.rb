@@ -5,16 +5,15 @@ class ShoppingCartsController < ApplicationController
   def create
     @listing = Listing.find(params[:listing_id])
     @shopping_cart.add(@listing, @listing.price)
-    redirect_to :back
+    redirect_to cart_path
   end
   def show
-  	
+    
   end
   
   def checkout
   	@shopping_cart.shopping_cart_items do |sci|
-  		
-       
+  		      
       sci.shopping_cart_id = nil 
       items << sci 
     end

@@ -11,7 +11,6 @@ class ListingsController < ApplicationController
   end
   def shop
     @listings = Listing.where(user: Listing.find(params[:id])).order("created_at DESC").page(params[:page]).per(8)
-    #@listings = Listing.where(seller: User.find(params[:id])) 
     @user = User.find(params[:id]) 
   end 
   # For the Shopping cart

@@ -5,13 +5,14 @@
 			<table class="table">
 				<tr>
 					<th>Item</th>
+					<th></th>
 					<th>Price</th>
 				</tr>
 				<% @shopping_cart.shopping_cart_items.each do |checkout| %>
 				<tr>
-					
-					<td><%= checkout.item.name %></td>
-					<td><%= number_to_currency(checkout.price) %></td>
+						<td><%= image_tag checkout.item.image.url(:micro) %></td>
+						<td><%= checkout.item.name %></td>
+						<td><%= number_to_currency(checkout.price) %></td>
 				</tr>
 				<% end %>
 			</table>
