@@ -9,6 +9,6 @@ class ShoppingCartItemsController < ApplicationController
   end
 
   def remove
-  	
+  	@shopping_cart.remove(@listing, 1)
   end
 end

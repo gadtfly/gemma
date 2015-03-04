@@ -8,6 +8,7 @@
 					<th></th>
 					<th class="text-center">Quantity</th>
 					<th>Price</th>
+					<th class="text-center">Action</th>
 				</tr>
 				<% @shopping_cart.shopping_cart_items.each do |checkout| %>
 				<tr>
@@ -15,6 +16,10 @@
 						<td><%= checkout.item.name %></td>
 						<td class="text-center"><%= checkout.quantity %></td>						
 						<td><%= number_to_currency(checkout.price) %></td>
+						<td class="text-center">
+							<div data-toggle="tooltip" title="Remove" data-placement="top"><%= link_to '', @shopping_cart.remove(@listing, 1), method: :destroy, class: "fa fa-minus-square" %>
+							</div>
+						</td>
 				</tr>
 				<% end %>
 			</table>

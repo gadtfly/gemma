@@ -2,7 +2,7 @@
 	<table class="table">
 		<% @shopping_cart.shopping_cart_items.each do |shopping_cart_item| %>
 		<tr>
-			<td><%= link_to '', @shopping_cart_item, method: :destroy, class: "fa fa-minus-square" %></td>
+			<td><%= link_to '', root_path, method: :destroy, class: "fa fa-minus-square" %></td>
 			<td><%= image_tag shopping_cart_item.item.image.url(:micro) %></td>
 			<td class="valign"><%= shopping_cart_item.item.name %></td>
 			<td class="valign">Q:<%= shopping_cart_item.quantity %></td>
