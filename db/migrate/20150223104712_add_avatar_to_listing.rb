@@ -1,5 +1,5 @@
-class AddimageToListing < ActiveRecord::Migration
+class AddAvatarToListing < ActiveRecord::Migration
   def change
-    add_column :listings, :image, :string
+    add_column :listings, :avatar, :string
   end
 end
